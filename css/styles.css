@@ -1,0 +1,86 @@
+body {
+  padding-top: 0;
+}
+.navbar {
+    background-color: #4682b4!important;
+}
+.navbar-brand {
+  color: #fff;
+}
+.navbar-brand:hover {
+  color: #ccc;
+}
+.navbar-nav .nav-link {
+  color: #fff;
+}
+.navbar-nav .nav-link:hover {
+  color: #ccc;
+}
+
+.btn-outline-success {
+  color: #fff;
+  border-color: #fff;
+}
+.btn-outline-success:hover {
+  color: #4682b4;
+  border-color: #fff;
+  background-color: #ccc;
+}
+
+.jumbotron {
+  margin-bottom: 0px;
+  background-image: url(../img/d3.png);
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #333;
+}
+.jumbotron .container {
+  background-color: #eaeaea;
+  opacity: .9;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.jumbotron .container h1 {
+  font-size: 3em;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #4682b4;
+  border-color: #4682b4;
+}
+.btn-secondary:hover {
+  background-color: #386890;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #aaa;
+  border-color: #999;
+  font-size: .9rem;
+}
+
+.btn-dark:hover {
+  color: #fff;
+  background-color: #999;
+  border-color: #777;
+}
+
+.btn-success {
+  font-size: .9rem;
+}
+
+a {
+  color: #4682b4;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.charts-basic li {
+  padding: 10px;
+  /*margin: 20px;*/
+}
