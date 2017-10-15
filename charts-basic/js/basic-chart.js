@@ -1,18 +1,15 @@
-$('a.plot-link').on('click', function(event) {
-	siblingDiv = $(this).siblings('div');
-	siblingDiv.toggle();
-	divClass = siblingDiv.attr('class');
-	plotId = siblingDiv.children('div').attr('id');
-	console.log(divClass, plotId);
-	if (divClass == 'hidden') {
-		siblingDiv.removeClass('hidden');
-		if (siblingDiv.find('svg').length == 0) {
-			initChart(plotId);
-		}
-	} else {
-		siblingDiv.addClass('hidden');
+$( "#tabs" ).tabs({
+  active: false,
+	collapsible: true,
+	hide: true,
+	show: false,
+	activate: function( event, ui ) {
+		var thisID = ui.newPanel.attr('id');
+		chartDivID = $('#' + thisID + ' > div:first-child').attr('id');
+		initChart(chartDivID);
 	}
-});
+}).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 
 function chartFactory(type = 'scatterPlot') {
   var _chart = {},
@@ -246,3 +243,9 @@ function update(chartType) {
 function randomVal(val) {
   return Math.random() * (val - 1);
 }
+
+/*initChart('scatterPlot');
+initChart('lineChart');
+initChart('areaChart');
+initChart('barChart');
+initChart('bubbleChart');*/

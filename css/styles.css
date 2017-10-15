@@ -45,42 +45,108 @@ body {
   font-size: 3em;
 }
 
-.btn-secondary {
+/*.btn-secondary {
   color: #fff;
   background-color: #4682b4;
   border-color: #4682b4;
 }
 .btn-secondary:hover {
   background-color: #386890;
+}*/
+
+.btn {
+  cursor: pointer;
 }
 
-.btn-dark {
-  color: #fff;
-  background-color: #aaa;
-  border-color: #999;
+/*.btn-success {
   font-size: .9rem;
-}
-
-.btn-dark:hover {
-  color: #fff;
-  background-color: #999;
-  border-color: #777;
-}
-
-.btn-success {
-  font-size: .9rem;
-}
+}*/
 
 a {
   color: #4682b4;
 }
 
-ul {
-  list-style: none;
+/* jQuery UI tabs */
+.ui-widget button {
+  font-size: .7em;
+  float: left;
 }
+#tabs.ui-tabs {
+  border: none;
+  background: none;
+}
+.ui-tabs-vertical {
+  width: 55em;
+}
+.ui-tabs-vertical .ui-tabs-nav {
+  padding: .2em .1em .2em .2em;
+  float: left;
+  width: 12em;
+  border: none;
+  background: none;
+  margin-top: 20px;
+}
+.ui-tabs-vertical .ui-tabs-nav li {
+  clear: left;
+  width: 100%;
+  border-bottom-width: 1px !important;
+  border-right-width: 0 !important;
+  margin: 0 -1px .2em 0;
+  border: none;
+  background: none;
+  margin-bottom: 1em;
+}
+.ui-tabs-vertical .ui-tabs-nav li a {
+  display:block;
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+  padding-bottom: 0;
+  padding-right: .1em;
+  border-right-width: 1px;
+  margin-bottom: 1em;
+}
+.ui-tabs-vertical .ui-tabs-panel {
+  padding: 1em;
+  float: right;
+  width: 40em;
+}
+.ui-tabs-vertical  .ui-tabs-nav .ui-tabs-anchor {
+  color: #fff;
+  font-size: .7em;
+  border: 2px solid #2f587a;
+  border-radius: 4px;
+  background-color: #4682b4;
+  opacity: .8;
+  /*color: #fafafa;
+  font-size: .7em;
+  border: none;*/
+}
+.ui-tabs-vertical .ui-tabs-nav .ui-tabs-anchor:focus {
+  /*outline: none;*/
+}
+.ui-tabs-vertical .ui-tabs-nav .ui-state-hover .ui-tabs-anchor,
+.ui-tabs-vertical .ui-tabs-nav .ui-state-active .ui-tabs-anchor,
+.ui-tabs-vertical .ui-tabs-nav .ui-state-focus .ui-tabs-anchor {
+  background-color: #4682b4;
+  color: #fff;
+  /*border: 2px solid #999;*/
+  opacity: 1;
+}
+.ui-tabs-collapsible {
 
+}
+.ui-tabs-tab {
 
-.charts-basic li {
-  padding: 10px;
-  /*margin: 20px;*/
+}
+.ui-tabs .ui-tabs-nav li {
+
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+
+}
+.ui-tabs-active {
+
+}
+.ui-tabs-panel {
+
 }
