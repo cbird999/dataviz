@@ -16,6 +16,10 @@ body {
 .navbar-nav .nav-link:hover {
   color: #ccc;
 }
+.dropdown-header {
+  background-color: #eee;
+  padding: .15rem 1.5rem;
+}
 
 .btn-outline-success {
   color: #fff;
@@ -45,22 +49,9 @@ body {
   font-size: 3em;
 }
 
-/*.btn-secondary {
-  color: #fff;
-  background-color: #4682b4;
-  border-color: #4682b4;
-}
-.btn-secondary:hover {
-  background-color: #386890;
-}*/
-
 .btn {
   cursor: pointer;
 }
-
-/*.btn-success {
-  font-size: .9rem;
-}*/
 
 a {
   color: #4682b4;
