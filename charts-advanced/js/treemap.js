@@ -30,14 +30,14 @@ function treemapChart() {
                   .padding(1);
       }
 
-      var root = d3.hierarchy(_nodes) // <-B
+      var root = d3.hierarchy(_nodes)
               .sum(_valueAccessor)
               .sort(function(a, b) { return b.value - a.value; });
 
       _treemap(root); //<-C
 
       var cells = _bodyG.selectAll("g")
-              .data(root.leaves(), function(d){console.log(d.data.name);return d.data.name;}); // <-D
+              .data(root.leaves(), function(d){console.log(d.data.name);return d.data.name;});
 
       renderCells(cells);
   }

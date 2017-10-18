@@ -26,10 +26,10 @@ function renderBars(padding, bars, _x, _y, yBaseline, chartWidth, dataLength) {
     .attr("class", "bar")
     .transition()
     .attr("x", function (d) {
-      return _x(d.x); // <-C
+      return _x(d.x);
     })
     .attr("y", function (d) {
-      return _y(d.y); // <-D
+      return _y(d.y);
     })
     .attr("height", function (d) {
       return yBaseline - _y(d.y);

@@ -6,6 +6,7 @@ $( "#tabs" ).tabs({
 	activate: function( event, ui ) {
 		var thisID = ui.newPanel.attr('id');
 		chartDivID = $('#' + thisID + ' > div:first-child').attr('id');
+    console.log(chartDivID);
     initChart(chartDivID);
 	}
 }).addClass( "ui-tabs-vertical ui-helper-clearfix" );
@@ -36,6 +37,13 @@ initChart = function(id) {
       treeGraph
   			.nodes(nodes)
   			.render(id);
+    });
+  } else if (id=='enclosureDiagram') {
+    d3.json("../data/flare.json", function (nodes) {
+      enclosureDiagram
+				.nodes(nodes)
+				.valueAccessor(size)
+        .render(id);
     });
   }
 }

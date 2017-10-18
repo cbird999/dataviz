@@ -1,0 +1,32 @@
+#enclosureDiagram text {
+  font-size: 11px;
+  pointer-events: none;
+}
+
+#enclosureDiagram  text.parent {
+  fill: steelblue;
+}
+
+#enclosureDiagram  text.child {
+ display: none;
+}
+
+#enclosureDiagram  circle {
+  fill: #ccc;
+  stroke: #999;
+  pointer-events: all;
+}
+
+#enclosureDiagram circle.parent {
+  fill: steelblue;
+  fill-opacity: .1;
+  stroke: steelblue;
+}
+
+#enclosureDiagram circle.parent:hover {
+  stroke-width: .5px;
+}
+
+#enclosureDiagram circle.child {
+  pointer-events: none;
+}

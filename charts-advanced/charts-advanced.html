@@ -22,6 +22,7 @@
     <link href="../css/styles.css" rel="stylesheet">
 		<link href="../css/d3-styles.css" rel="stylesheet">
     <link href="../css/tree.css" rel="stylesheet">
+    <link href="../css/pack.css" rel="stylesheet">
 	</head>
   <body>
     <nav class="navbar navbar-expand-md">
@@ -80,6 +81,9 @@
             <li>
 							<a href="#treeGraphContainer" class="plot-link">Tree Graph</a>
 						</li>
+            <li>
+							<a href="#enclosureDiagramContainer" class="plot-link">Enclosure Diagram</a>
+						</li>
 
 				</ul>
 				<div id="pieChartContainer">
@@ -121,7 +125,13 @@
           <div id="treeGraph">
 					</div>
 				</div>
-
+        <div id="enclosureDiagramContainer">
+          <div id="enclosureDiagram">
+					</div>
+          <div class="control-group">
+            <button class="btn btn-outline-secondary btn-sm" onclick="flipEnclosure()">Flip Value vs. Count</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -148,5 +158,6 @@
   <script type="text/javascript" src="./js/stackedareachart.js"></script>
   <script type="text/javascript" src="./js/treemap.js"></script>
   <script type="text/javascript" src="./js/treegraph.js"></script>
+  <script type="text/javascript" src="./js/pack.js"></script>
 </body>
 </html>
