@@ -1,4 +1,4 @@
-function gravity_charge() {
+function gravity_charge(velocity = false) {
 	var _viz = {};
 
 	var _w = 600,
@@ -6,7 +6,13 @@ function gravity_charge() {
 		_r = 4.5,
 		_nodes = [],
 		_svg,
-		_force;
+		_force,
+		_velocity;
+
+	if (velocity) {
+		_velocity = true;
+		var previousPoint;
+	}
 
 	_viz.render = function(_id) {
 		if (!_svg) {
@@ -33,8 +39,18 @@ function gravity_charge() {
 		}
 
 		_svg.on("mousemove", function () {
-			var point = d3.mouse(this),
-			  node = {x: point[0], y: point[1]};
+			var point = d3.mouse(this);
+			if (_velocity) {
+				var node = {
+					x: point[0],
+					y: point[1],
+					vx: previousPoint?point[0]-previousPoint[0]:point[0],
+					vy: previousPoint?point[1]-previousPoint[1]:point[1]
+				};
+				previousPoint = point;
+			} else {
+				var node = {x: point[0], y: point[1]};
+			}
 
 			_svg.append("circle")
 		  .data([node])
@@ -96,7 +112,3 @@ var gcViz = gravity_charge()
 			.force("collision", d3.forceCollide(r + 0.5).strength(1))
 	)
 gcViz.render("#gravity-charge-viz");
-
-var vizContainer = {
-	'gravity-charge' : gcViz
-}

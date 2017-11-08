@@ -102,19 +102,19 @@
         <div id="velocity">
 					<div id="velocity-viz"></div>
 					<div class="control-group">
-            <button class="btn btn-outline-secondary btn-sm" onclick="noForce()">
+            <button class="btn btn-outline-secondary btn-sm" onclick="noForce('velocity-viz')">
                 No Force
             </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="repulsion()">
+            <button class="btn btn-outline-secondary btn-sm" onclick="repulsion('velocity-viz')">
                 Repulsion
             </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="gravity()">
+            <button class="btn btn-outline-secondary btn-sm" onclick="gravity('velocity-viz')">
                 Gravity
             </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity()">
+            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity('velocity-viz')">
                 Positioning with Gravity
             </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion()">
+            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion('velocity-viz')">
                 Positioning with Repulsion
             </button>
 					</div>
@@ -142,6 +142,6 @@
 	<script type="text/javascript" src="../js/d3.js"></script>
 	<script type="text/javascript" src="./js/d3-force.js"></script>
   <script type="text/javascript" src="./js/gravity-force.js"></script>
-  <!--<script type="text/javascript" src="./js/velocity.js"></script> -->
+  <script type="text/javascript" src="./js/velocity.js"></script>
 </body>
 </html>
