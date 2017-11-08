@@ -197,6 +197,9 @@
   /*float: right;*/
 }
 
+.control-group button {
+  margin-right: 5px;
+}
 .active {
   stroke: #666;
   stroke-width: 2px;
