@@ -147,6 +147,9 @@ a {
 #mapVideo {
   height: 500px;
   width: auto;
+  background-color: #dadada;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 #mapVideo video {
