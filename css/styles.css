@@ -98,8 +98,9 @@ a {
 }
 .ui-tabs-vertical .ui-tabs-panel {
   padding: 1em;
-  float: right;
+  float: left;
   width: 40em;
+  margin-left: 25px;
 }
 .ui-tabs-vertical  .ui-tabs-nav .ui-tabs-anchor {
   color: #fff;
@@ -140,4 +141,15 @@ a {
 }
 .ui-tabs-panel {
 
+}
+
+
+#mapVideo {
+  height: 500px;
+  width: auto;
+}
+
+#mapVideo video {
+  height: 100%;
+  width: auto;
 }
