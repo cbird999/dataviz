@@ -1,147 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="Showcase of data visualization products.">
-	 	<meta name="author" content="Christopher Cardinal">
-	 	<link rel="icon" href="./img/favicon.ico">
-
-		<title>DatViz by Christopher Cardinal</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-		<!-- Custom styles for this template -->
-    <link href="../css/jumbotron.css" rel="stylesheet">
-		<!-- jQueryUI styles -->
-    <link href="../css/jquery-ui.min.css" rel="stylesheet">
-		<link href="../css/jquery-ui.structure.min.css" rel="stylesheet">
-		<link href="../css/jquery-ui.theme.min.css" rel="stylesheet">
-    <!-- Custom styles -->
-    <link href="../css/styles.css" rel="stylesheet">
-		<link href="../css/d3-styles.css" rel="stylesheet">
-    <link href="../css/tree.css" rel="stylesheet">
-    <link href="../css/pack.css" rel="stylesheet">
-	</head>
-  <body>
-    <nav class="navbar navbar-expand-md">
-      <a class="navbar-brand" href="../">Christopher Cardinal</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <!--<li class="nav-item">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><!-- Required meta tags --><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="Showcase of data visualization products."><meta name="author" content="Christopher Cardinal">
+	<link href="./img/favicon.ico" rel="icon" />
+	<title>DatViz by Christopher Cardinal</title>
+	<!-- Bootstrap CSS -->
+	<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" rel="stylesheet" /><!-- Custom styles for this template -->
+	<link href="../css/jumbotron.css" rel="stylesheet" /><!-- jQueryUI styles -->
+	<link href="../css/jquery-ui.min.css" rel="stylesheet" />
+	<link href="../css/jquery-ui.structure.min.css" rel="stylesheet" />
+	<link href="../css/jquery-ui.theme.min.css" rel="stylesheet" /><!-- Custom styles -->
+	<link href="../css/styles.css" rel="stylesheet" />
+	<link href="../css/d3-styles.css" rel="stylesheet" />
+	<link href="../css/tree.css" rel="stylesheet" />
+	<link href="../css/pack.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md"><a class="navbar-brand" href="../">Christopher Cardinal</a><button aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarsExampleDefault" data-toggle="collapse" type="button"></button>
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<ul class="navbar-nav mr-auto">
+	<li class="nav-item active"><a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a></li>
+	<!--<li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="../" id="dropdown-about" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown-about">
-              <a class="dropdown-item" href="../docs/CHRISTOPHER_CARDINAL.pdf" download="Christopher_Cardinal.pdf">Resume</a>
-              <a class="dropdown-header">Online Products</a>
-              <a class="dropdown-item" href="http://paidpost.nytimes.com/ben-and-jerrys/shouldering-the-burden.html" target="_blank">New York Time Climate Change Map</a>
-              <a class="dropdown-item" href="http://floodhelpny.org/" target="_blank">New York City Flood Zone Finder</a>
-              <a class="dropdown-item" href="http://historicaldialogues.org/mhdp/" target="_blank">Historical Dialogues Research Map</a>
-            </div>
-          </li>
-        </ul>
-        <!--<form class="form-inline my-2 my-lg-0">
+	<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="../" id="dropdown-about">About</a>
+	<div aria-labelledby="dropdown-about" class="dropdown-menu"><a class="dropdown-item" download="Christopher_Cardinal.pdf" href="../docs/CHRISTOPHER_CARDINAL.pdf">Resume</a> <a class="dropdown-header">Online Products</a> <a class="dropdown-item" href="http://paidpost.nytimes.com/ben-and-jerrys/shouldering-the-burden.html" target="_blank">New York Time Climate Change Map</a> <a class="dropdown-item" href="http://floodhelpny.org/" target="_blank">New York City Flood Zone Finder</a> <a class="dropdown-item" href="http://historicaldialogues.org/mhdp/" target="_blank">Historical Dialogues Research Map</a></div>
+	</li>
+</ul>
+<!--<form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>-->
-      </div>
-    </nav>
+        </form>--></div>
+</nav>
 
-		<div class="container-fluid">
-			<div id="tabs">
-				<ul class="d3-force">
-						<li>
-							<a href="#gravity-charge" class="plot-link">Gravity and Charge</a>
-						</li>
-						<li>
-							<a href="#velocity" class="plot-link">Customizing Velocity</a>
-						</li>
-            <li>
-							<a href="#link-constraint" class="plot-link">Setting Link Constraint</a>
-						</li>
-            <li>
-							<a href="#manipulating-force" class="plot-link">Manipulating Force</a>
-						</li>
-            <li>
-							<a href="#force-directed-graph" class="plot-link">Building a Force-Directed Graph</a>
-						</li>
-				</ul>
-				<div id="gravity-charge">
-					<div id="gravity-charge-viz"></div>
-					<div class="control-group">
-            <button class="btn btn-outline-secondary btn-sm" onclick="noForce('gravity-charge')">
-                No Force
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="repulsion('gravity-charge')">
-                Repulsion
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="gravity('gravity-charge')">
-                Gravity
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity('gravity-charge')">
-                Positioning with Gravity
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion('gravity-charge')">
-                Positioning with Repulsion
-            </button>
-					</div>
-				</div>
-        <div id="velocity">
-					<div id="velocity-viz"></div>
-					<div class="control-group">
-            <button class="btn btn-outline-secondary btn-sm" onclick="noForce('velocity-viz')">
-                No Force
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="repulsion('velocity-viz')">
-                Repulsion
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="gravity('velocity-viz')">
-                Gravity
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity('velocity-viz')">
-                Positioning with Gravity
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion('velocity-viz')">
-                Positioning with Repulsion
-            </button>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="container-fluid">
+<div class="back-button"><a class="btn btn-success" href="../" role="button">Back</a></div>
+<div id="tabs">
+<ul class="d3-force">
+	<li><a class="plot-link" href="#gravity-charge">Gravity and Charge</a></li>
+	<li><a class="plot-link" href="#velocity">Customizing Velocity</a></li>
+	<li><a class="plot-link" href="#link-constraint">Setting Link Constraint</a></li>
+	<li><a class="plot-link" href="#manipulating-force">Manipulating Force</a></li>
+	<li><a class="plot-link" href="#force-directed-graph">Building a Force-Directed Graph</a></li>
+</ul>
 
-		<hr>
+<div id="gravity-charge">
+<div id="gravity-charge-viz"></div>
 
-		<footer>
-			<p></p>
-		</footer>
-	</div> <!-- /container -->
+<div class="control-group"><button class="btn btn-outline-secondary btn-sm" onclick="noForce('gravity-charge')">No Force</button><button class="btn btn-outline-secondary btn-sm" onclick="repulsion('gravity-charge')">Repulsion</button><button class="btn btn-outline-secondary btn-sm" onclick="gravity('gravity-charge')">Gravity</button><button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity('gravity-charge')">Positioning with Gravity</button><button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion('gravity-charge')">Positioning with Repulsion</button></div>
+</div>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="../js/jquery-3.2.1.min.js"></script>
-  <script src="../js/jquery-ui.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../js/ie10-viewport-bug-workaround.js"></script>
-	<!-- d3.js -->
-	<script type="text/javascript" src="../js/d3.js"></script>
-	<script type="text/javascript" src="./js/d3-force.js"></script>
-  <script type="text/javascript" src="./js/gravity-force.js"></script>
-  <script type="text/javascript" src="./js/velocity.js"></script>
-</body>
+<div id="velocity">
+<div id="velocity-viz"></div>
+
+<div class="control-group"><button class="btn btn-outline-secondary btn-sm" onclick="noForce('velocity-viz')">No Force</button><button class="btn btn-outline-secondary btn-sm" onclick="repulsion('velocity-viz')">Repulsion</button><button class="btn btn-outline-secondary btn-sm" onclick="gravity('velocity-viz')">Gravity</button><button class="btn btn-outline-secondary btn-sm" onclick="positioningWithGravity('velocity-viz')">Positioning with Gravity</button><button class="btn btn-outline-secondary btn-sm" onclick="positioningWithRepulsion('velocity-viz')">Positioning with Repulsion</button></div>
+</div>
+</div>
+</div>
+
+<hr />
+<footer>
+<p></p>
+</footer>
+<!-- /container --><!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS --><script src="../js/jquery-3.2.1.min.js"></script><script src="../js/jquery-ui.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script><!-- Placed at the end of the document so the pages load faster --><!-- IE10 viewport hack for Surface/desktop Windows 8 bug --><script src="../js/ie10-viewport-bug-workaround.js"></script><!-- d3.js --><script type="text/javascript" src="../js/d3.js"></script><script type="text/javascript" src="./js/d3-force.js"></script><script type="text/javascript" src="./js/gravity-force.js"></script><script type="text/javascript" src="./js/velocity.js"></script></body>
 </html>
