@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>ArcGIS Template Application</title>
+  <!-- Bootstrap style -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- ArcGIS style -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css">
+  <!-- custom style -->
+  <link rel="stylesheet" href="index.css">
+
+  <script>
+    var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
+    window.dojoConfig = {
+      packages: [
+        {
+          name: "app",
+          location: locationPath
+        }, {
+          name: 'vue',
+          location: locationPath,
+          main: 'vue.min'
+        }
+      ],
+      deps: ['app/index']
+    };
+  </script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/7ead0e0b18.js" crossorigin="anonymous"></script>
+  <!-- Boostrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- VueJS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- ArcGIS JS -->
+  <script src="https://js.arcgis.com/4.14/"></script>
+</head>
+<body>
+  <noscript> JavaScript is required in order to use this app </noscript>
+  <div id="app">
+    <div class="app-container">
+      <!-- header component -->
+      <app-header></app-header>
+      <!-- webmap component -->
+      <app-webmap></app-webmap>
+      <!-- widget filter-->
+      <div class="esri-widget" id="widgetFilter" style="display: none;">
+        <widget-filter 
+          @spinner="setLoading"
+          @toast="showToast">
+        </widget-filter>
+      </div>
+      <!-- legend widget -->
+      <div class="esri-widget" id="widgetLegend" style="display: none;">
+        <widget-legend 
+          v-bind:legend-items="[]">
+        </widget-legend>
+      </div>
+      <!-- app spinner component -->
+      <app-spinner :is-spinning="isLoading"></app-spinner>
+      <!-- toast widget -->
+      <app-toast
+        :toast-title="toastTitle"
+        :toast-message="toastMessage"
+        :toast-alert-class="toastAlertClass">
+      </app-toast>
+    </div>
+  </div>
+  
+  
+  <!-- app template -->
+  <script type="text/x-template" id="app-template">
+  </script>
+
+  <!-- app header template -->
+  <script type="text/x-template" id="app-header-template">
+    <div>
+      <header class="header">
+        <span class="heading">{{ title }}: <em>{{ subtitle }}</em></span>
+      </header>
+    </div>
+  </script>
+
+  <!-- app webmap template -->
+  <script type="text/x-template" id="app-webmap-template">
+    <div :id="viewDiv"></div>
+  </script>   
+  
+  <!-- widget filter template -->
+  <script type="text/x-template" id="widget-filter-template">
+    <div class="accordion">
+      <div class="card">
+        <div class="card-header" id="headingFilter">
+          <h2 class="mb-0">
+            <span>
+              <i class="fas fa-search"></i>
+            </span>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="true" aria-controls="collapseFilter">
+              Search for specific activities
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapseFilter" class="collapse show" aria-labelledby="headingFilter" data-parent="#widgetFilter">
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Search for specific activities.</h4>
+                  <form action="">
+                    <div class="form-group">
+                      <label for="redressSelect">Historical Redress</label>
+                      <select
+                        class="form-control"
+                        id="redressSelect"
+                        v-model="formData.redressValue"
+                        aria-describedby="redressSelect">
+                        <option value="" selected>-- Any -- </option>
+                        <option v-for="value in selectValues.redressTypeValues" v-bind:value="value.ID">
+                          {{ value.Name }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="injusticeSelect">Historical Injustice</label>
+                      <select 
+                        class="form-control"
+                        id="injusticeSelect"
+                        v-model="formData.injusticeValue"
+                        aria-describedby="injusticeSelect">
+                        <option value="" selected>-- Any -- </option>
+                        <option v-for="value in selectValues.injusticeTypeValues" v-bind:value="value.ID">
+                          {{ value.Name }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="regionSelect">Historical Region</label>
+                      <select 
+                        class="form-control"
+                        id="regionSelect"
+                        v-model="formData.regionValue"
+                        aria-describedby="regionSelect">
+                        <option value="" selected>-- Any -- </option>
+                        <option v-for="value in selectValues.regionValues" v-bind:value="value.ID">
+                          {{ value.Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <button 
+                  class="btn btn-primary"
+                  @click.prevent="filterSubmit">
+                    Search
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- widget legend template -->
+  <script type="text/x-template" id="widget-legend-template">
+    <div class="accordion">
+      <div class="card">
+        <div class="card-header" id="headingLegend">
+          <h2 class="mb-0">
+            <span>
+              <i class="fab fa-elementor"></i>
+            </span>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseLegend" aria-expanded="true" aria-controls="collapseLegend">
+              Racial Redress in America
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseLegend" class="collapse show" aria-labelledby="headingLegend" data-parent="#widgetLegend">
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row" v-for="item in legendItems">
+                <div class="col-md-2">
+                  <img class="legendIcon" v-bind:src="getSVG(item.ID)"></img>
+                </div>
+                <div class="col-md-10">
+                    <span class="legendLabel">{{ item.Name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- app spinner template -->
+  <script type="text/x-template" id="app-spinner-template">
+    <img
+      id="loadingImg"
+      src="images/loading-blue-large.gif"
+      :class="{showSpinner: isSpinning, hideSpinner: !isSpinning}"/>
+  </script>
+
+    <!-- toast template -->
+    <script type="text/x-template" id="app-toast-template">
+      <div id="appToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <i class="fas fa-exclamation-circle" aria-hidden="true" style="color: orangered;"></i>
+          <strong class="ml-2 mr-auto">{{ toastTitle }}</strong> <small></small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div 
+          class="toast-body mb-0"
+          :class="toastAlertClass">
+          {{ toastMessage }}
+        </div>
+      </div>
+    </script>
+
+    
+  <!-- <div class="app-container">
+
+    <img id="loadingImg" src="images/loading-blue-large.gif"
+      style="position:absolute; right:50%; top:50%; z-index:100; display:none;"/>
+
+    <header class="header">
+        <span class="heading">Racial Redress: <em>Activities in the US</em></span>
+    </header>
+
+    <div id="viewDiv"></div>
+  </div> -->
+
+</body>
+</html>
+
