@@ -46,29 +46,23 @@
     <div class="app-container">
       <!-- header component -->
       <app-header></app-header>
+
       <!-- webmap component -->
-      <app-webmap></app-webmap>
-      <!-- widget filter-->
-      <div class="esri-widget" id="widgetFilter" style="display: none;">
-        <widget-filter 
-          @spinner="setLoading"
-          @toast="showToast">
-        </widget-filter>
-      </div>
-      <!-- legend widget -->
-      <div class="esri-widget" id="widgetLegend" style="display: none;">
-        <widget-legend 
-          v-bind:legend-items="[]">
-        </widget-legend>
-      </div>
+      <app-webmap
+        @spinner="setLoading"
+        @toast="showToast">
+      </app-webmap>
+      
       <!-- app spinner component -->
       <app-spinner :is-spinning="isLoading"></app-spinner>
+
       <!-- toast widget -->
       <app-toast
         :toast-title="toastTitle"
         :toast-message="toastMessage"
         :toast-alert-class="toastAlertClass">
       </app-toast>
+
     </div>
   </div>
   
@@ -88,7 +82,26 @@
 
   <!-- app webmap template -->
   <script type="text/x-template" id="app-webmap-template">
-    <div :id="viewDiv"></div>
+    <div class="webmap-container">
+      <div :id="viewDiv"></div>
+      <!-- widget filter-->
+      <div class="esri-widget" id="widgetFilter" style="display: none;">
+        <widget-filter
+          :redress-type-values="selectValues.redressTypeValues"
+          :injustice-type-values="selectValues.injusticeTypeValues"
+          :region-values="selectValues.regionValues"
+          @spinner="setLoading"
+          @toast="showToast">
+        </widget-filter>
+      </div>
+
+      <!-- legend widget -->
+      <div class="esri-widget" id="widgetLegend" style="display: none;">
+        <widget-legend 
+          :redress-type-values="selectValues.redressTypeValues">
+        </widget-legend>
+      </div>
+    </div>
   </script>   
   
   <!-- widget filter template -->
@@ -121,7 +134,7 @@
                         v-model="formData.redressValue"
                         aria-describedby="redressSelect">
                         <option value="" selected>-- Any -- </option>
-                        <option v-for="value in selectValues.redressTypeValues" v-bind:value="value.ID">
+                        <option v-for="value in redressTypeValues" v-bind:value="value.ID">
                           {{ value.Name }}
                         </option>
                       </select>
@@ -134,7 +147,7 @@
                         v-model="formData.injusticeValue"
                         aria-describedby="injusticeSelect">
                         <option value="" selected>-- Any -- </option>
-                        <option v-for="value in selectValues.injusticeTypeValues" v-bind:value="value.ID">
+                        <option v-for="value in injusticeTypeValues" v-bind:value="value.ID">
                           {{ value.Name }}
                         </option>
                       </select>
@@ -147,7 +160,7 @@
                         v-model="formData.regionValue"
                         aria-describedby="regionSelect">
                         <option value="" selected>-- Any -- </option>
-                        <option v-for="value in selectValues.regionValues" v-bind:value="value.ID">
+                        <option v-for="value in regionValues" v-bind:value="value.ID">
                           {{ value.Name }}
                         </option>
                       </select>
@@ -187,9 +200,9 @@
         <div id="collapseLegend" class="collapse show" aria-labelledby="headingLegend" data-parent="#widgetLegend">
           <div class="card-body">
             <div class="container-fluid">
-              <div class="row" v-for="item in legendItems">
+              <div class="row mb-2" v-for="item in redressTypeValues">
                 <div class="col-md-2">
-                  <img class="legendIcon" v-bind:src="getSVG(item.ID)"></img>
+                  <img class="legendIcon" v-bind:src="getSVG(item.Color)"></img>
                 </div>
                 <div class="col-md-10">
                     <span class="legendLabel">{{ item.Name }}</span>
@@ -212,7 +225,7 @@
 
     <!-- toast template -->
     <script type="text/x-template" id="app-toast-template">
-      <div id="appToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div id="appToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <i class="fas fa-exclamation-circle" aria-hidden="true" style="color: orangered;"></i>
           <strong class="ml-2 mr-auto">{{ toastTitle }}</strong> <small></small>
@@ -227,19 +240,6 @@
         </div>
       </div>
     </script>
-
-    
-  <!-- <div class="app-container">
-
-    <img id="loadingImg" src="images/loading-blue-large.gif"
-      style="position:absolute; right:50%; top:50%; z-index:100; display:none;"/>
-
-    <header class="header">
-        <span class="heading">Racial Redress: <em>Activities in the US</em></span>
-    </header>
-
-    <div id="viewDiv"></div>
-  </div> -->
 
 </body>
 </html>
